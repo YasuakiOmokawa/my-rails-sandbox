@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_28_055149) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_28_061500) do
   create_table "organizations", force: :cascade do |t|
-    t.integer "role"
+    t.integer "role", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
