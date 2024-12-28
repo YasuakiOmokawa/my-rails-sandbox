@@ -4,7 +4,7 @@ class Organization < ApplicationRecord
     option: 1 # ラベル付けだけのためにあるロール（コードでは利用しない）
   }
 
-  class << self 
+  class << self
     alias_method :_org_roles, :roles
 
     def roles
