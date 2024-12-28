@@ -1,4 +1,8 @@
 class Organization < ApplicationRecord
+  enum :role, {
+    member: 0,
+    option: 1
+  }
 end
 
 # == Schema Information
