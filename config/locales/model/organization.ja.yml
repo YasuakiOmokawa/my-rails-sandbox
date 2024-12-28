@@ -1,0 +1,5 @@
+ja:
+  enums:
+    organization:
+      role: # 未使用ロールは画面表示しないので翻訳しない
+        member: メンバー

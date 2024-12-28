@@ -1,16 +1,14 @@
 class Organization < ApplicationRecord
   enum :role, {
-    member: 0,
-    option: 1
+    member: 0, # メンバー
+    option: 1 # ラベル付けだけのためにあるロール（コードでは利用しない）
   }
-end
 
-# == Schema Information
-#
-# Table name: organizations
-#
-#  id         :integer          not null, primary key
-#  role       :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#
+  class << self
+    alias_method :_org_roles, :roles
+
+    def roles
+      _org_roles.except(:option)
+    end
+  end
+end
