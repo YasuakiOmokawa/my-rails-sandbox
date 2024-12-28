@@ -14,3 +14,13 @@ class Test < ApplicationRecord
   #   end
   # end
 end
+
+# == Schema Information
+#
+# Table name: tests
+#
+#  id         :integer          not null, primary key
+#  role       :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
