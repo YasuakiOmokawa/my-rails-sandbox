@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Test < ApplicationRecord
-  enum role: {
+  enum :role, {
     member: 1,
     option: 2
   }
