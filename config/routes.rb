@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  mount Flipper::UI.app(Flipper) => '/flipper'
+  mount Flipper::UI.app(Flipper) => "/flipper"
 end
