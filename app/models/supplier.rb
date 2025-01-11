@@ -1,4 +1,5 @@
 class Supplier < ApplicationRecord
+  has_one :account
 end
 
 # == Schema Information
