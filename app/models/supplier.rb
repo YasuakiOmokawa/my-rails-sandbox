@@ -1,5 +1,9 @@
 class Supplier < ApplicationRecord
   has_one :account
+
+  def identical_name
+    "#{id}_#{name}"
+  end
 end
 
 # == Schema Information
