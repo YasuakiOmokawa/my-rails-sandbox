@@ -1,4 +1,7 @@
 class Account < ApplicationRecord
+  def name
+    "this is account name."
+  end
 end
 
 # == Schema Information
