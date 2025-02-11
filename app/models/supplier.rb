@@ -13,6 +13,13 @@ class Supplier < ApplicationRecord
     account.name
   end
 
+  def test_transaction
+    Supplier.transaction(isolation: :repeatable_read) do
+      binding.b
+      update!(name: "updated_name")
+    end
+  end
+
   define_method(:a_name3, instance_method(:account_name))
 end
 
