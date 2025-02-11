@@ -1,6 +1,15 @@
 class Account < ApplicationRecord
+  validate :hoge_validate, on: :update
+
   def name
     "this is account name."
+  end
+
+  private
+
+  def hoge_validate
+    puts account_number_was
+    puts account_number
   end
 end
 
