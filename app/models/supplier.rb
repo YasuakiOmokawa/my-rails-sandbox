@@ -1,5 +1,6 @@
 class Supplier < ApplicationRecord
   has_one :account
+  accepts_nested_attributes_for :account
 
   delegate :name, to: :account, prefix: true
 
