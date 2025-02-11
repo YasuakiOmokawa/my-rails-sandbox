@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgres:17
+    container_name: postgres_rails_sandbox
+    ports:
+      - 5432:5432
+    volumes:
+      - db-store:/var/lib/postgresql/data6432
+    environment:
+      POSTGRES_USER: 'user'
+      POSTGRES_PASSWORD: 'postgres'
+    restart: always
+volumes:
+  db-store:
