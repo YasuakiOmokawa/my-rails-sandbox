@@ -5,7 +5,22 @@ class Account < ApplicationRecord
     "this is account name."
   end
 
+  def has_license?
+    args = [
+      { service: "hoge", app: "fuga", license: "license-hoge-fuga2" },
+      { service: "hoge", app: "piyo", license: nil }
+    ]
+    results = args.map do |arg|
+      get_license(service: arg[:service], app: arg[:app]) == arg[:license]
+    end
+    results.any?
+  end
+
   private
+
+  def get_license(service:, app:)
+    "license-#{service}-#{app}"
+  end
 
   def hoge_validate
     puts account_number_was
