@@ -1,17 +1,19 @@
 class Account < ApplicationRecord
   validate :hoge_validate, on: :update
 
+  LICENSE_RULES = [
+      { service: "hoge", app: "fuga", license: "license-hoge-fuga2" },
+      { service: "hoge", app: "piyo", license: "license-hoge-piyo" },
+      { service: "hoge", app: "piyo", license: nil }
+    ]
+  private_constant :LICENSE_RULES
+
   def name
     "this is account name."
   end
 
   def has_license?
-    license_rules = [
-      { service: "hoge", app: "fuga", license: "license-hoge-fuga2" },
-      { service: "hoge", app: "piyo", license: "license-hoge-piyo" },
-      { service: "hoge", app: "piyo", license: nil }
-    ]
-    Parallel.any?(license_rules, in_threads: 3) do |license_rule|
+    Parallel.any?(LICENSE_RULES, in_threads: 3) do |license_rule|
       get_license(service: license_rule[:service], app: license_rule[:app]) == license_rule[:license]
     end
   end
