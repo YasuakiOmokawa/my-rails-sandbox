@@ -6,14 +6,14 @@ class Account < ApplicationRecord
   end
 
   def has_license?
-    args = [
+    license_rules = [
       { service: "hoge", app: "fuga", license: "license-hoge-fuga2" },
+      { service: "hoge", app: "piyo", license: "license-hoge-piyo" },
       { service: "hoge", app: "piyo", license: nil }
     ]
-    results = args.map do |arg|
-      get_license(service: arg[:service], app: arg[:app]) == arg[:license]
+    Parallel.any?(license_rules, in_threads: 3) do |license_rule|
+      get_license(service: license_rule[:service], app: license_rule[:app]) == license_rule[:license]
     end
-    results.any?
   end
 
   private
